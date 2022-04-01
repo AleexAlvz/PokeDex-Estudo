@@ -1,8 +1,8 @@
-package com.aleexalvz.pokedex.data.model
+package com.aleexalvz.pokedex.data.retrofit.model
 
 import com.google.gson.annotations.SerializedName
 
 class PokeListResults(
     @SerializedName("results")
-    val results: List<Pokemon>
+    val results: List<PokemonBasicInfo>
 )

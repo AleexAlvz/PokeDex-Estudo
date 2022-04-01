@@ -1,10 +1,10 @@
 package com.aleexalvz.pokedex.data.model
 
-import com.google.gson.annotations.SerializedName
-
-class Pokemon(
-    @SerializedName("name")
+data class Pokemon(
+    val index: Int,
     val name: String,
-    @SerializedName("url")
-    val url: String
+    val spriteURL: String,
+    val types: List<String>,
+    val weight: String,
+    val favorite: Boolean = false
 )

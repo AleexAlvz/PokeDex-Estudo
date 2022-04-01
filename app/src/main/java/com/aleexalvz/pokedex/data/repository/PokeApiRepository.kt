@@ -1,8 +1,8 @@
 package com.aleexalvz.pokedex.data.repository
 
 import android.util.Log
-import com.aleexalvz.pokedex.data.model.Pokemon
-import com.aleexalvz.pokedex.data.model.PokemonDetail
+import com.aleexalvz.pokedex.data.retrofit.model.PokemonBasicInfo
+import com.aleexalvz.pokedex.data.retrofit.model.PokemonDetail
 import com.aleexalvz.pokedex.data.retrofit.PokeApiInterface
 import com.aleexalvz.pokedex.data.retrofit.PokeApiService
 
@@ -10,9 +10,9 @@ class PokeApiRepository: PokemonRepository {
 
     var pokeApiService: PokeApiInterface = PokeApiService.getPokeApiService()
 
-    override suspend fun getAllPokemons(): List<Pokemon> {
-        val call = pokeApiService.getAllPokemons()
-        var listaPokemons: List<Pokemon>? = null
+    override suspend fun getAllPokemons(): List<PokemonBasicInfo> {
+        val call = pokeApiService.getAllPokemonBasicInfos()
+        var listaPokemons: List<PokemonBasicInfo>? = null
         try {
             listaPokemons = call.execute().body()?.results
         } catch (error: Exception) {
@@ -22,7 +22,7 @@ class PokeApiRepository: PokemonRepository {
     }
 
     override suspend fun getPokemonDetailByName(pokemonName: String): PokemonDetail? {
-        val call = pokeApiService.getPokemonByName(pokemonName)
+        val call = pokeApiService.getPokemonDetailByName(pokemonName)
         var pokemon: PokemonDetail? = null
         try {
             pokemon = call.execute().body()

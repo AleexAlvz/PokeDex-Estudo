@@ -1,4 +1,4 @@
-package com.aleexalvz.pokedex.data.model
+package com.aleexalvz.pokedex.data.retrofit.model
 
 import com.google.gson.annotations.SerializedName
 

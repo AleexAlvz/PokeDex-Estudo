@@ -1,31 +1,34 @@
 package com.aleexalvz.pokedex.apresentation.pokelist
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.aleexalvz.pokedex.R
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.flow.onEach
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.aleexalvz.pokedex.databinding.ActivityPokedexBinding
 
 class PokeListActivity: AppCompatActivity() {
 
-    lateinit var viewModel: PokeListViewModel
+    private val viewModel: PokeListViewModel by lazy { ViewModelProvider(this)[PokeListViewModel::class.java] }
+    private val binding: ActivityPokedexBinding by lazy { ActivityPokedexBinding.inflate(layoutInflater) }
+    private val adapter: PokeListAdapter by lazy { PokeListAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokedex)
-
-        initVars()
-        getPokemonDetailList()
-    }
-
-    private fun getPokemonDetailList() {
+        setContentView(binding.root)
+        initViews()
         viewModel.getAllPokemonDetails()
+        observeActivityState()
     }
 
-    private fun initVars() {
-        viewModel = ViewModelProvider(this).get(PokeListViewModel::class.java)
+    private fun observeActivityState() {
+        viewModel.pokemonDetailState.observe(this) {
+            adapter.addPokemonDetail(it[it.size-1])
+            adapter.notifyDataSetChanged()
+        }
     }
 
+    private fun initViews() {
+        binding.recyclerViewPokemons.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewPokemons.adapter = adapter
+    }
 }
