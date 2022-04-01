@@ -5,7 +5,6 @@ import com.aleexalvz.pokedex.data.model.Pokemon
 import com.aleexalvz.pokedex.data.model.PokemonDetail
 import com.aleexalvz.pokedex.data.retrofit.PokeApiInterface
 import com.aleexalvz.pokedex.data.retrofit.PokeApiService
-import java.lang.Exception
 
 class PokeApiRepository: PokemonRepository {
 
@@ -16,7 +15,7 @@ class PokeApiRepository: PokemonRepository {
         var listaPokemons: List<Pokemon>? = null
         try {
             listaPokemons = call.execute().body()?.results
-        } catch (error: Exception){
+        } catch (error: Exception) {
             Log.i("POKEMON", "Não foi possível buscar todos pokemons")
         }
         return listaPokemons ?: mutableListOf()
@@ -27,7 +26,7 @@ class PokeApiRepository: PokemonRepository {
         var pokemon: PokemonDetail? = null
         try {
             pokemon = call.execute().body()
-        } catch (error: Exception){
+        } catch (error: Exception) {
             Log.i("POKEMON", "Não foi possível localizar o pokemon $pokemonName")
         }
         return pokemon

@@ -1,10 +1,12 @@
 package com.aleexalvz.pokedex.apresentation.pokelist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import com.aleexalvz.pokedex.R
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.onEach
 
 class PokeListActivity: AppCompatActivity() {
 
@@ -15,6 +17,10 @@ class PokeListActivity: AppCompatActivity() {
         setContentView(R.layout.activity_pokedex)
 
         initVars()
+        getPokemonDetailList()
+    }
+
+    private fun getPokemonDetailList() {
         viewModel.getAllPokemonDetails()
     }
 
