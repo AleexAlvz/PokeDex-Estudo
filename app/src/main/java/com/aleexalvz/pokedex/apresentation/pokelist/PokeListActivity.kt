@@ -22,7 +22,7 @@ class PokeListActivity: AppCompatActivity() {
 
     private fun observeActivityState() {
         viewModel.pokemonDetailState.observe(this) {
-            adapter.addPokemonDetail(it[it.size-1])
+            adapter.addPokemon(it[it.size-1])
             adapter.notifyDataSetChanged()
         }
     }
