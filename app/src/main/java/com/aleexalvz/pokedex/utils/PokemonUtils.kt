@@ -10,7 +10,7 @@ object PokemonUtils {
     fun WrapperPokemon(pokemonDetail: PokemonDetail): Pokemon {
         val index = extractIndexOfFormUrl(pokemonDetail.forms[0])
         val name = pokemonDetail.forms[0].name
-        val spriteUrl = pokemonDetail.sprites.frontDefault
+        val spriteUrl = pokemonDetail.sprites.frontDefault ?: ""
         val types = extractTypeStringOfTypes(pokemonDetail.types)
         val weight = pokemonDetail.weight
 
