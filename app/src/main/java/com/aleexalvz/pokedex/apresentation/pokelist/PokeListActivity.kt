@@ -1,6 +1,8 @@
 package com.aleexalvz.pokedex.apresentation.pokelist
 
 import android.os.Bundle
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,6 +57,7 @@ class PokeListActivity : BaseActivity() {
     private fun configureUpButton() {
         upButton.setOnClickListener {
             recyclerView.scrollToPosition(0)
+            upButton.visibility = INVISIBLE
             yTotalScrollRecyclerView = 0
             actualYMoved = 0
             verifyUpButtonVisibility()
@@ -87,8 +90,9 @@ class PokeListActivity : BaseActivity() {
 
     private fun verifyUpButtonVisibility() {
         if (yTotalScrollRecyclerView > 500) {
-            upButton.animate().alpha(1f).duration = 200
-        } else upButton.animate().alpha(0f).duration = 200
+            upButton.visibility = VISIBLE
+            upButton.animate().alpha(1f).setDuration(200)
+        } else upButton.animate().alpha(0f).setDuration(200).withEndAction{ upButton.visibility = INVISIBLE }
     }
 
     private fun hideTitleContainer() {
@@ -104,7 +108,7 @@ class PokeListActivity : BaseActivity() {
     private fun showTitleContainer() {
         isTitleContainerHide = false
         titleContainer.animate().translationY(0f).alpha(1f).duration = 500
-        recyclerView.animate().translationY(0f).setDuration(500)
+        recyclerView.animate().translationY(0f).duration = 500
         actualYMoved = 0
     }
 }
