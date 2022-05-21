@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.aleexalvz.pokedex.R
-import com.aleexalvz.pokedex.apresentation.pokelist.PokeListActivity
+import com.aleexalvz.pokedex.apresentation.pokelist.activity.PokeListActivity
 import com.aleexalvz.pokedex.base.ui.BaseActivity
 import com.aleexalvz.pokedex.databinding.ActivitySplashScreenBinding
 

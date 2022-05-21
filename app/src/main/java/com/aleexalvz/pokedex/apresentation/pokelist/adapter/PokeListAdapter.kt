@@ -1,4 +1,4 @@
-package com.aleexalvz.pokedex.apresentation.pokelist
+package com.aleexalvz.pokedex.apresentation.pokelist.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
