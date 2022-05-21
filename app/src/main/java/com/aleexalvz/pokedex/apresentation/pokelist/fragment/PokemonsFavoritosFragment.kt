@@ -9,22 +9,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aleexalvz.pokedex.apresentation.pokelist.adapter.PokeListAdapter
-import com.aleexalvz.pokedex.apresentation.pokelist.viewmodel.PokeListViewModel
+import com.aleexalvz.pokedex.apresentation.pokelist.viewmodel.FavoritosViewModel
 import com.aleexalvz.pokedex.base.ui.BaseFragment
 import com.aleexalvz.pokedex.data.model.ViewState
-import com.aleexalvz.pokedex.databinding.FragmentPokedexBinding
+import com.aleexalvz.pokedex.databinding.FragmentPokemonsFavoritosBinding
 import com.aleexalvz.pokedex.utils.setGone
 import com.aleexalvz.pokedex.utils.setVisible
 
-class PokedexFragment: BaseFragment() {
+class PokemonsFavoritosFragment : BaseFragment() {
 
-    private val binding: FragmentPokedexBinding by lazy {
-        FragmentPokedexBinding.inflate(
+    private val binding: FragmentPokemonsFavoritosBinding by lazy {
+        FragmentPokemonsFavoritosBinding.inflate(
             layoutInflater
         )
     }
 
-    private val viewModel: PokeListViewModel by lazy { ViewModelProvider(requireActivity())[PokeListViewModel::class.java] }
+    private val viewModel: FavoritosViewModel by lazy { ViewModelProvider(requireActivity())[FavoritosViewModel::class.java] }
 
     private val adapter: PokeListAdapter by lazy { PokeListAdapter(requireContext()) }
 
@@ -154,4 +154,5 @@ class PokedexFragment: BaseFragment() {
         recyclerView.animate().translationY(0f).duration = 500
         actualYMoved = 0
     }
+
 }
