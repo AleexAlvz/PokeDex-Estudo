@@ -50,16 +50,41 @@
         tools:itemCount="6"
         tools:listitem="@layout/item_pokemon" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/red"
-        android:src="@drawable/ic_baseline_search_24"
-        app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottom_navigation_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/pokedex_activity_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/black">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:theme="@style/PokedexNavigation"
+                app:itemTextAppearanceActive="@style/PokedexNavigation"
+                app:itemTextAppearanceInactive="@style/PokedexNavigation"
+                app:menu="@menu/bottom_navigation_pokedex" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red"
+            android:elevation="10dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:backgroundTint="@color/black"
+            app:layout_anchor="@id/pokedex_activity_bottom_navigation"
+            app:layout_anchorGravity="center_horizontal" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/up_button"
