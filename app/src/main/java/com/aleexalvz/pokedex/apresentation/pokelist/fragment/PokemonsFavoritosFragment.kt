@@ -14,6 +14,7 @@ import com.aleexalvz.pokedex.base.ui.BaseFragment
 import com.aleexalvz.pokedex.data.model.ViewState
 import com.aleexalvz.pokedex.databinding.FragmentPokemonsFavoritosBinding
 import com.aleexalvz.pokedex.utils.setGone
+import com.aleexalvz.pokedex.utils.setInvisible
 import com.aleexalvz.pokedex.utils.setVisible
 
 class PokemonsFavoritosFragment : BaseFragment() {
@@ -98,7 +99,7 @@ class PokemonsFavoritosFragment : BaseFragment() {
     private fun configureUpButton() {
         upButton.setOnClickListener {
             recyclerView.scrollToPosition(0)
-            upButton.visibility = View.INVISIBLE
+            upButton.setGone()
             yTotalScrollRecyclerView = 0
             actualYMoved = 0
             verifyUpButtonVisibility()

@@ -60,12 +60,57 @@
         android:id="@+id/progress_circular"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:indeterminateTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:indeterminateTint="@color/white"
-        />
+        android:visibility="gone" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/error_container"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:backgroundTint="@color/white"
+        android:elevation="5dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/error_tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="Falha em buscar os pokemons"
+                android:textSize="32dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/error_btn_try_again"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/error_tv_message"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:text="tentar novamente" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/up_button"

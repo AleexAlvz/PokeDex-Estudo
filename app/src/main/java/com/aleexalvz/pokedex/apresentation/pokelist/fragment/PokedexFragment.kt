@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +31,8 @@ class PokedexFragment: BaseFragment() {
     private val titleContainer by lazy { binding.titleContainer }
     private val upButton by lazy { binding.upButton }
     private val progressBar by lazy { binding.progressCircular }
+    private val errorContainer by lazy { binding.errorContainer }
+    private val errorButtonTryAgain by lazy { binding.errorBtnTryAgain }
 
     private var actualYMoved = 0
     private var yTotalScrollRecyclerView = 0
@@ -50,6 +51,12 @@ class PokedexFragment: BaseFragment() {
         viewModel.getAllPokemonDetails()
         observeViewStateLiveData()
         observePokemonDetailData()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.clearList()
+        viewModel.cancelJob()
     }
 
     private fun observePokemonDetailData() {
@@ -71,17 +78,21 @@ class PokedexFragment: BaseFragment() {
     }
 
     private fun setupError() {
-        Toast.makeText(requireContext(), "Falha na busca dos pokemons. Tente mais tarde!", Toast.LENGTH_LONG).show()
+        progressBar.setGone()
+        recyclerView.setGone()
+        errorContainer.setVisible()
     }
 
     private fun setupView() {
         recyclerView.setVisible()
         progressBar.setGone()
+        errorContainer.setGone()
     }
 
     private fun setupLoading() {
         progressBar.setVisible()
         recyclerView.setGone()
+        errorContainer.setGone()
     }
 
     private fun initViews() {
@@ -93,12 +104,20 @@ class PokedexFragment: BaseFragment() {
 
     private fun configureListeners() {
         configureUpButton()
+        configureTryAgainButton()
+    }
+
+    private fun configureTryAgainButton() {
+        errorButtonTryAgain.setOnClickListener {
+            viewModel.cancelJob()
+            viewModel.getAllPokemonDetails()
+        }
     }
 
     private fun configureUpButton() {
         upButton.setOnClickListener {
             recyclerView.scrollToPosition(0)
-            upButton.visibility = View.INVISIBLE
+            upButton.setGone()
             yTotalScrollRecyclerView = 0
             actualYMoved = 0
             verifyUpButtonVisibility()

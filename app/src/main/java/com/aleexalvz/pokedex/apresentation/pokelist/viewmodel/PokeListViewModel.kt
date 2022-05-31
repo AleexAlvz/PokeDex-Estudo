@@ -8,6 +8,7 @@ import com.aleexalvz.pokedex.data.model.Pokemon
 import com.aleexalvz.pokedex.data.model.ViewState
 import com.aleexalvz.pokedex.data.repository.PokeApiRepository
 import com.aleexalvz.pokedex.data.usecase.GetAllPokemonUseCase
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -23,7 +24,7 @@ class PokeListViewModel: ViewModel() {
 
     private val pokemonList = mutableListOf<Pokemon>()
 
-    fun getAllPokemonDetails() = viewModelScope.launch {
+    private val job = viewModelScope.launch {
         try {
             _viewStateLiveData.postValue(ViewState.Loading)
 
@@ -41,5 +42,12 @@ class PokeListViewModel: ViewModel() {
             _viewStateLiveData.postValue(ViewState.Error)
         }
 
+    }
+
+    fun getAllPokemonDetails() = job.start()
+
+    fun cancelJob() {
+        viewModelScope.cancel()
+        job.cancel()
     }
 }

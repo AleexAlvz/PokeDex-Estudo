@@ -41,6 +41,10 @@ class PokeListAdapter(
         pokeList.add(pokemon)
     }
 
+    fun clearList() {
+        pokeList.clear()
+    }
+
     class PokeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val number: TextView = itemView.findViewById(R.id.item_pokemon_number)
         val name: TextView = itemView.findViewById(R.id.item_pokemon_name)
