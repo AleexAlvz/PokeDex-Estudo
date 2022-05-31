@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "616687888796",
+    "project_id": "alexcosta-pokedex",
+    "storage_bucket": "alexcosta-pokedex.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616687888796:android:d60ab7d6c8bb98bc154059",
+        "android_client_info": {
+          "package_name": "com.aleexalvz.pokedex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616687888796-oe23bm6j1e820nikqq77e116rfol8v9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aleexalvz.pokedex",
+            "certificate_hash": "4a3afdc10a6331888a905a4401d89ed3d122d91d"
+          }
+        },
+        {
+          "client_id": "616687888796-7i2ve8oeb8o27decokad17gscoansibb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_JGEhT1fj2lxTeOQymMa_zAqfUrBB9RY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616687888796-7i2ve8oeb8o27decokad17gscoansibb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
